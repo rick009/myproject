@@ -1,0 +1,13 @@
+parameters:
+#    icsoc_form.example.class: Icsoc\FormBundle\Example
+
+services:
+    icsoc.form.text:
+        class: Icsoc\FormBundle\Form\Type\TextType
+        tags:
+            - { name: form.type, alias: custom_text }
+
+    icsoc.form.text_extension:
+        class: Icsoc\FormBundle\Form\Extension\TextTypeExtension
+        tags:
+            - { name: form.type_extension, alias: text }

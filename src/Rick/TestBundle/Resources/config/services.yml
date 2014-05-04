@@ -1,0 +1,8 @@
+parameters:
+#    rick_test.example.class: Rick\TestBundle\Example
+
+services:
+    rick.test.form.type.post:
+        class: Rick\TestBundle\Form\Type\PostType
+        tags:
+            - { name: form.type, alias: post }

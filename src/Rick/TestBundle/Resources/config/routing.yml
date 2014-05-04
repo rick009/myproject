@@ -1,0 +1,7 @@
+rick_test_homepage:
+    pattern:  /test
+    defaults: { _controller: RickTestBundle:Default:index }
+
+rick_test_success:
+    pattern: /success
+    defaults: { _controller: RickTestBundle:Default:success}

@@ -1,0 +1,23 @@
+Rick\TestBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: Rick\TestBundle\Entity\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '50'
+        age:
+            type: integer
+        country:
+            type: string
+            length: '20'
+        city:
+            type: string
+            length: '20'
+    lifecycleCallbacks: {  }

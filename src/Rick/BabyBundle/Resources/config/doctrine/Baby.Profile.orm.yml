@@ -1,0 +1,64 @@
+Rick\BabyBundle\Entity\Baby\Profile:
+    type: entity
+    table: profile
+    repositoryClass: Rick\BabyBundle\Entity\Baby\ProfileRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '50'
+        sex:
+            type: boolean
+        nameMeaning:
+            type: string
+            length: 255
+            column: name_meaning
+        nameGeneratedBy:
+            type: string
+            length: '50'
+            column: name_generated_by
+        nickName:
+            type: string
+            length: '50'
+            column: nick_name
+        nickNameGeneratedBy:
+            type: string
+            length: '50'
+            column: nick_name_generated_by
+        bloodType:
+            type: boolean
+            column: blood_type
+        height:
+            type: integer
+        weight:
+            type: float
+        birthday:
+            type: datetime
+        yearOfBirth:
+            type: string
+            length: '10'
+            column: year_of_birth
+        lunarBirthday:
+            type: datetime
+            column: lunar_birthday
+        constellation:
+            type: string
+            length: '20'
+        ageOfDad:
+            type: integer
+            column: age_of_dad
+        ageOfMum:
+            type: integer
+            column: age_of_mum
+        hospital:
+            type: string
+            length: '100'
+        picture:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

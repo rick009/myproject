@@ -10,31 +10,27 @@
 namespace Icsoc\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class InputType extends AbstractType
+class TextType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('name', 'text')
-            ->add('age', 'integer')
-            ->add('country', 'text')
-            ->add('city', 'text')
-            ->add('save', 'submit')
-        ;
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rick\TestBundle\Entity\Post',
+            'label' => '输入框',
+            'label_attr' => array(
+                'class' => 'control-label',
+            )
         ));
+    }
+
+    public function getParent()
+    {
+        return 'text';
     }
 
     public function getName()
     {
-        return 'post';
+        return 'custom_text';
     }
 }
