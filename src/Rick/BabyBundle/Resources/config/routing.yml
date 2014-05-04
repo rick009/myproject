@@ -1,0 +1,11 @@
+rick_baby_homepage:
+    pattern:  /baby
+    defaults: { _controller: RickBabyBundle:Baby:index }
+
+rick_baby_new:
+    pattern:  /baby/new
+    defaults: { _controller: RickBabyBundle:Baby:new }
+
+rick_baby_profile:
+    pattern:  /baby/profile
+    defaults: { _controller: RickBabyBundle:Baby:profile }
