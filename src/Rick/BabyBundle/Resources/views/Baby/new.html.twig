@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="calendar"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        var calendar = $("#calendar").calendar(
+                {
+                    tmpl_path: "{{ asset('bootstrap-calendar/tmpls/') }}",
+                    events_source: [{
+                        "id": 293,
+                        "title": "第一次吃奶",
+                        "url": "",
+                        "class": "event-info",
+                        "start": 1399121373000, // Milliseconds
+                        "end": 1399121473000 // Milliseconds
+                    },{
+                        "id": 294,
+                        "title": "第一次大便",
+                        "url": "",
+                        "class": "event-important",
+                        "start": 1399121373000, // Milliseconds
+                        "end": 1399121473000 // Milliseconds
+                    }],
+                    language: 'zh-CN',
+                    height: 200
+                });
+    </script>
+{% endblock %}
