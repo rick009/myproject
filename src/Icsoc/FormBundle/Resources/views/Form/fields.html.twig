@@ -1,0 +1,14 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+            {% if icon is defined %}
+                <span class="{{ icon }}"></span>
+            {% endif %}
+        {% if required %}
+            <span class="required" title="This field is required">*</span>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_widget_simple %}

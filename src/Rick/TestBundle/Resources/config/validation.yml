@@ -1,0 +1,4 @@
+Rick\TestBundle\Entity\Post:
+    properties:
+        name:
+            - NotBlank: ~

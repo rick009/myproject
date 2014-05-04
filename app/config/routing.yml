@@ -1,0 +1,12 @@
+rick_baby:
+    resource: "@RickBabyBundle/Resources/config/routing.yml"
+    prefix:   /
+
+icsoc_form:
+    resource: "@IcsocFormBundle/Resources/config/routing.yml"
+    prefix:   /
+
+rick_test:
+    resource: "@RickTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
