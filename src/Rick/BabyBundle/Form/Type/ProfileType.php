@@ -82,7 +82,7 @@ class ProfileType extends AbstractType
             ->add('hospital', 'text', array(
                 'label' => '出生医院'
             ))
-            ->add('picture', 'file', array(
+            ->add('file', 'file', array(
                 'label' => '照片'
             ))
             ->add('submit', 'submit', array(
@@ -91,6 +91,7 @@ class ProfileType extends AbstractType
             ->add('reset', 'reset', array(
                 'label' => '重置'
             ))
+            ->setMethod('post')
         ;
     }
 

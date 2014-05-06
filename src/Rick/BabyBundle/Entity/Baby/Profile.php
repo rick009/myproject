@@ -3,6 +3,7 @@
 namespace Rick\BabyBundle\Entity\Baby;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Profile
@@ -17,87 +18,94 @@ class Profile
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var boolean
      */
-    private $sex;
+    private $sex = '';
 
     /**
      * @var string
      */
-    private $nameMeaning;
+    private $nameMeaning = '';
 
     /**
      * @var string
      */
-    private $nameGeneratedBy;
+    private $nameGeneratedBy = '';
 
     /**
      * @var string
      */
-    private $nickName;
+    private $nickName = '';
 
     /**
      * @var string
      */
-    private $nickNameGeneratedBy;
+    private $nickNameGeneratedBy = '';
 
     /**
      * @var boolean
      */
-    private $bloodType;
+    private $bloodType = '';
 
     /**
      * @var integer
      */
-    private $height;
+    private $height = '';
 
     /**
      * @var float
      */
-    private $weight;
+    private $weight = '';
 
     /**
      * @var \DateTime
      */
-    private $birthday;
+    private $birthday = '';
 
     /**
      * @var string
      */
-    private $yearOfBirth;
+    private $yearOfBirth = '';
 
     /**
      * @var \DateTime
      */
-    private $lunarBirthday;
+    private $lunarBirthday = '';
 
     /**
      * @var string
      */
-    private $constellation;
+    private $constellation = '';
 
     /**
      * @var integer
      */
-    private $ageOfDad;
+    private $ageOfDad = '';
 
     /**
      * @var integer
      */
-    private $ageOfMum;
+    private $ageOfMum = '';
 
     /**
      * @var string
      */
-    private $hospital;
+    private $hospital = '';
 
     /**
      * @var string
      */
-    private $picture;
+    private $picture = '';
+
+    /**
+     * 虚拟文件
+     *
+     * @var string
+     */
+    private $file = '';
 
 
     /**
@@ -499,5 +507,80 @@ class Profile
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->picture
+            ? null
+            : $this->getUploadRootDir().'/'.$this->picture;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->picture
+            ? null
+            : $this->getUploadDir().'/'.$this->picture;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads';
+    }
+
+    /**
+     * Get file
+     *
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set file
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Upload the file
+     */
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->setPicture($this->getWebPath() . $this->getFile()->getClientOriginalName());
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
     }
 }
