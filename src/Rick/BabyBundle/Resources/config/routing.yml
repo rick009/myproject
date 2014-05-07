@@ -9,3 +9,7 @@ rick_baby_new:
 rick_baby_profile:
     pattern:  /baby/profile
     defaults: { _controller: RickBabyBundle:Baby:profile }
+
+rick_baby_history:
+    pattern:  /baby/history
+    defaults: { _controller: RickBabyBundle:Baby:history }

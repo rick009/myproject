@@ -2,11 +2,10 @@
 
 namespace Rick\BabyBundle\Controller;
 
-use Rick\BabyBundle\Entity\Baby\Profile;
 use Rick\BabyBundle\Form\Type\ProfileType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BabyController extends Controller
 {
@@ -15,9 +14,22 @@ class BabyController extends Controller
         return $this->render('RickBabyBundle:Baby:index.html.twig');
     }
 
+    /**
+     * 妈妈新建记录
+     *
+     * @return Response
+     */
     public function newAction()
     {
-        return $this->render('RickBabyBundle:Baby:new.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $profile = $em->getRepository('RickBabyBundle:Baby\Profile')->find(1);
+        $birthday = $profile->getBirthday()->format('Y-m-d');
+        $today = new \DateTime('now');
+        $days = $today->diff($profile->getBirthday())->format('%a');
+        return $this->render('RickBabyBundle:Baby:new.html.twig', array(
+            'birthday' => $birthday,
+            'days' => $days
+        ));
     }
 
     /**
@@ -35,7 +47,6 @@ class BabyController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $profile = $form->getData();
-            print_r($profile);
             $profile->upload();
             $em->persist($profile);
             $em->flush();
@@ -45,5 +56,11 @@ class BabyController extends Controller
             'form' => $form->createView(),
             'profile' => $profile
         ));
+    }
+
+    public function historyAction()
+    {
+        return new Response();
+        //return $this->render('RickBabyBundle:Baby:profile.html.twig');
     }
 }
