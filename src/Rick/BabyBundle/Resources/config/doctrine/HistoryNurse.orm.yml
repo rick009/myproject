@@ -1,0 +1,19 @@
+Rick\BabyBundle\Entity\HistoryNurse:
+    type: entity
+    table: history_nurse
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nurseTime:
+            type: time
+            column: nurse_time
+        milliliter:
+            type: integer
+        historyId:
+            type: integer
+            column: history_id
+    lifecycleCallbacks: {  }

@@ -43,7 +43,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active">
                             <span class="navbar-text">
-                                爸爸妈妈好爱你哦！
+                                宝宝出生第
+                                <span class="label label-danger" id="days">
+                                    {{ days|default(0) }}
+                                </span>
+                                天，爸爸妈妈好爱你哦！
                             </span>
                         </li>
                     </ul>

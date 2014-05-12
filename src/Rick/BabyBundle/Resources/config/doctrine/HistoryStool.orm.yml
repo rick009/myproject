@@ -1,0 +1,20 @@
+Rick\BabyBundle\Entity\HistoryStool:
+    type: entity
+    table: history_stool
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        historyId:
+            type: integer
+            column: history_id
+        stoolTime:
+            type: time
+            column: stool_time
+        color:
+            type: string
+            length: '20'
+    lifecycleCallbacks: {  }

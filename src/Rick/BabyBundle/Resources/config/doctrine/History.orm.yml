@@ -1,0 +1,35 @@
+Rick\BabyBundle\Entity\History:
+    type: entity
+    table: null
+    repositoryClass: Rick\BabyBundle\Entity\HistoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nowdate:
+            type: date
+        weight:
+            type: float
+        height:
+            type: float
+        temperatureMorning:
+            type: float
+            column: temperature_morning
+        temperatureEvening:
+            type: float
+            column: temperature_evening
+        isBath:
+            type: boolean
+            column: is_bath
+        isStroke:
+            type: boolean
+            column: is_stroke
+        picture:
+            type: string
+            length: 255
+        remark:
+            type: text
+    lifecycleCallbacks: {  }

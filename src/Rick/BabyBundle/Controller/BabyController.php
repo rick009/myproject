@@ -3,6 +3,7 @@
 namespace Rick\BabyBundle\Controller;
 
 use Rick\BabyBundle\Form\Type\ProfileType;
+use Rick\BabyBundle\Form\Type\HistoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +27,11 @@ class BabyController extends Controller
         $birthday = $profile->getBirthday()->format('Y-m-d');
         $today = new \DateTime('now');
         $days = $today->diff($profile->getBirthday())->format('%a');
+
+        $form = $this->createForm(new HistoryType());
+
         return $this->render('RickBabyBundle:Baby:new.html.twig', array(
+            'form' => $form->createView(),
             'birthday' => $birthday,
             'days' => $days
         ));
