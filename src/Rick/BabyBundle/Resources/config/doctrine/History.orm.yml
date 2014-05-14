@@ -1,7 +1,14 @@
 Rick\BabyBundle\Entity\History:
     type: entity
-    table: null
+    table: history
     repositoryClass: Rick\BabyBundle\Entity\HistoryRepository
+    oneToMany:
+        nurses:
+            targetEntity: HistoryNurse
+            mappedBy: history
+        stools:
+            targetEntity: HistoryStool
+            mappedBy: history
     id:
         id:
             type: integer

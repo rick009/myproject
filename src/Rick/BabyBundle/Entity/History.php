@@ -3,6 +3,7 @@
 namespace Rick\BabyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * History
@@ -275,5 +276,89 @@ class History
     public function getRemark()
     {
         return $this->remark;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $nurses;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->nurses = new ArrayCollection();
+        $this->stools = new ArrayCollection();
+    }
+
+    /**
+     * Add nurses
+     *
+     * @param \Rick\BabyBundle\Entity\HistoryNurse $nurses
+     * @return History
+     */
+    public function addNurse(HistoryNurse $nurses)
+    {
+        $this->nurses[] = $nurses;
+
+        return $this;
+    }
+
+    /**
+     * Remove nurses
+     *
+     * @param \Rick\BabyBundle\Entity\HistoryNurse $nurses
+     */
+    public function removeNurse(HistoryNurse $nurses)
+    {
+        $this->nurses->removeElement($nurses);
+    }
+
+    /**
+     * Get nurses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNurses()
+    {
+        return $this->nurses;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $stools;
+
+
+    /**
+     * Add stools
+     *
+     * @param \Rick\BabyBundle\Entity\HistoryStool $stools
+     * @return History
+     */
+    public function addStool(HistoryStool $stools)
+    {
+        $this->stools[] = $stools;
+
+        return $this;
+    }
+
+    /**
+     * Remove stools
+     *
+     * @param \Rick\BabyBundle\Entity\HistoryStool $stools
+     */
+    public function removeStool(HistoryStool $stools)
+    {
+        $this->stools->removeElement($stools);
+    }
+
+    /**
+     * Get stools
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStools()
+    {
+        return $this->stools;
     }
 }

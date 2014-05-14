@@ -23,6 +23,7 @@ class BabyController extends Controller
     public function newAction()
     {
         $em = $this->getDoctrine()->getManager();
+        /** @var \Rick\BabyBundle\Entity\Baby\Profile $profile */
         $profile = $em->getRepository('RickBabyBundle:Baby\Profile')->find(1);
         $birthday = $profile->getBirthday()->format('Y-m-d');
         $today = new \DateTime('now');

@@ -36,6 +36,15 @@ class HistoryType extends AbstractType
             ->add('is_stroke', 'checkbox', array(
                 'label' => '是否抚触',
             ))
+            ->add('nurses', 'collection', array(
+                'label' => '喂奶',
+                'allow_add' => true,
+                'type' => new NurseType()
+            ))
+            ->add('stools', 'collection', array(
+                'label' => '大便',
+                'type' => new StoolType()
+            ))
             ->add('submit', 'submit', array(
                 'label' => '保存'
             ))

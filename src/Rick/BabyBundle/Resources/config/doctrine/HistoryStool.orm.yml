@@ -1,6 +1,13 @@
 Rick\BabyBundle\Entity\HistoryStool:
     type: entity
     table: history_stool
+    manyToOne:
+        history:
+            targetEntity: History
+            inversedBy: stools
+            joinColumn:
+                name: history_id
+                referencedColumnName: id
     id:
         id:
             type: integer

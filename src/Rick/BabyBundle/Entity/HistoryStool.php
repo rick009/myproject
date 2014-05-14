@@ -108,4 +108,32 @@ class HistoryStool
     {
         return $this->color;
     }
+    /**
+     * @var \Rick\BabyBundle\Entity\History
+     */
+    private $history;
+
+
+    /**
+     * Set history
+     *
+     * @param \Rick\BabyBundle\Entity\History $history
+     * @return HistoryStool
+     */
+    public function setHistory(\Rick\BabyBundle\Entity\History $history = null)
+    {
+        $this->history = $history;
+
+        return $this;
+    }
+
+    /**
+     * Get history
+     *
+     * @return \Rick\BabyBundle\Entity\History 
+     */
+    public function getHistory()
+    {
+        return $this->history;
+    }
 }
